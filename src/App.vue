@@ -1,17 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" v-if="enabled">
+  <HelloWorld msg="Welcome to Your Vue.js App" v-else/>
 </template>
 
-<script>
+<script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import { useFlag } from '@unleash/proxy-client-vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+const enabled = useFlag('TESTING-VUE')
+
 </script>
 
 <style>
